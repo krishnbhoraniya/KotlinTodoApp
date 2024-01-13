@@ -48,6 +48,11 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version") //Kotlin Extensions and Coroutines support for Room
     ksp("androidx.room:room-compiler:$room_version") // To use Kotlin annotation processing tool (kapt)
 
+    val lifecycle_version = "2.7.0"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version") // ViewModel
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version") // Lifecycles only (without ViewModel or LiveData)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
