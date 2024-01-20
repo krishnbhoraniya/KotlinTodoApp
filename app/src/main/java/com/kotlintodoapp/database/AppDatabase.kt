@@ -4,11 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.kotlintodoapp.database.Daos.TodoDao
-import com.kotlintodoapp.database.Entities.Todo
+import com.kotlintodoapp.database.daos.TodoDao
+import com.kotlintodoapp.database.entities.Todo
 import kotlin.concurrent.Volatile
 
-@Database(entities = [Todo::class], version = 1)
+@Database(entities = [Todo::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {

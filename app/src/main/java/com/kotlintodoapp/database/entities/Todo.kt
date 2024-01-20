@@ -1,4 +1,4 @@
-package com.kotlintodoapp.database.Entities
+package com.kotlintodoapp.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
