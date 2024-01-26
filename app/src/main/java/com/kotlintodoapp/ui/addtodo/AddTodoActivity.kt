@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.kotlintodoapp.R
 import com.kotlintodoapp.database.entities.Todo
 import com.kotlintodoapp.databinding.ActivityAddTodoBinding
@@ -22,6 +23,7 @@ class AddTodoActivity : AppCompatActivity(), AddEditTodoListener {
         super.onCreate(savedInstanceState)
         binding = ActivityAddTodoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.my_light_primary)
 
         getIntentData()
         setListener()

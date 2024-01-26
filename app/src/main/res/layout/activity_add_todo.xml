@@ -19,13 +19,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         tools:context=".ui.addtodo.AddTodoActivity">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/my_light_primary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +41,7 @@
                     android:id="@+id/ivBackArrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="@{() -> addEditTodoListener.onBackClick()}"
                     android:padding="8dp"
                     app:srcCompat="@drawable/baseline_arrow_back_24" />
 
@@ -49,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="12dp"
-                    android:onClick="@{()-> addEditTodoListener.onSaveClick(oldTodo != null)}"
+                    android:onClick="@{() -> addEditTodoListener.onSaveClick(oldTodo != null)}"
                     android:padding="8dp"
                     app:srcCompat="@drawable/baseline_check_24" />
 
@@ -59,13 +61,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
                     android:layout_toStartOf="@+id/ivCheck"
+                    android:onClick="@{() -> addEditTodoListener.onDeleteClick()}"
                     android:padding="8dp"
                     android:visibility="@{oldTodo != null ? View.VISIBLE : View.GONE}"
                     app:srcCompat="@drawable/baseline_delete_24" />
 
             </RelativeLayout>
 
-        </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.MaterialToolbar>
 
         <EditText
             android:id="@+id/etTitle"
@@ -78,6 +81,9 @@
             android:ems="10"
             android:hint="@string/title"
             android:text="@{oldTodo.title}"
+            android:textColor="@color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:textCursorDrawable="@drawable/edit_text_cursor"
             android:textSize="26sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,6 +101,9 @@
             android:inputType="textMultiLine"
             android:lineSpacingMultiplier="1.8"
             android:text="@{oldTodo.note}"
+            android:textColor="@color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:textCursorDrawable="@drawable/edit_text_cursor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/etTitle"
             app:layout_constraintStart_toStartOf="@+id/etTitle"

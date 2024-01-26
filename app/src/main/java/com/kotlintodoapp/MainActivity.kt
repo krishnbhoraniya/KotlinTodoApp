@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.kotlintodoapp.database.entities.Todo
 import com.kotlintodoapp.databinding.ActivityMainBinding
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity(), TodoClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.my_light_primary)
 
         initViews()
         initData()
