@@ -29,6 +29,7 @@ class TodoAdapter(private val todoClickListener: TodoClickListener) :
 
     @SuppressLint("NotifyDataSetChanged")
     fun setData(todoList: List<Todo>) {
+        todoArrayList.clear()
         todoArrayList.addAll(todoList)
         notifyDataSetChanged()
     }

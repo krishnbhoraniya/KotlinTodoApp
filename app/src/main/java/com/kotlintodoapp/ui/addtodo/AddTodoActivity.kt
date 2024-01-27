@@ -10,6 +10,7 @@ import com.kotlintodoapp.database.entities.Todo
 import com.kotlintodoapp.databinding.ActivityAddTodoBinding
 import com.kotlintodoapp.utilities.IntentKey
 import com.kotlintodoapp.utilities.getCurrentDateTime
+import com.kotlintodoapp.utilities.ifTrue
 import com.kotlintodoapp.utilities.serializable
 import com.kotlintodoapp.utilities.toast
 
@@ -44,11 +45,7 @@ class AddTodoActivity : AppCompatActivity(), AddEditTodoListener {
         val note = binding.etNote.text.toString()
 
         if (title.isNotBlank() && note.isNotBlank()) {
-            todo = if (isOldTodo) {
-                Todo(oldTodo?.id, oldTodo?.title, oldTodo?.note, getCurrentDateTime())
-            } else {
-                Todo(null, title, note, getCurrentDateTime())
-            }
+            todo = Todo(isOldTodo ifTrue oldTodo?.id, title, note, getCurrentDateTime())
             val bundle = Bundle()
             bundle.putSerializable(IntentKey.TODO, todo)
             setIntentResult(bundle)

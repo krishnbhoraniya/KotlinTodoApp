@@ -1,6 +1,5 @@
 package com.kotlintodoapp.ui.addtodo
 
-import androidx.lifecycle.LiveData
 import com.kotlintodoapp.database.daos.TodoDao
 import com.kotlintodoapp.database.entities.Todo
 
@@ -10,7 +9,7 @@ class TodoRepository(private val todoDao: TodoDao) {
         todoDao.insert(todo);
     }
 
-    fun getAllTodos(): LiveData<List<Todo>> {
+    fun getAllTodos(): List<Todo> {
         return todoDao.getAllTodos();
     }
 

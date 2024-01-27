@@ -29,4 +29,5 @@ inline fun <reified T : Serializable> Intent.serializable(key: String): T? = whe
     else -> @Suppress("DEPRECATION") getSerializableExtra(key) as? T
 }
 
+infix fun <T> Boolean.ifTrue(trueValue: T): T? = if (this) trueValue else null
 
