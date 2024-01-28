@@ -8,12 +8,22 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCaller
 import java.io.Serializable
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 fun Context.toast(message: String) =
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 
 fun getCurrentDateTime(): String {
     return dateTimeFormatter.format(Date())
+}
+
+fun getCurrentTimeMillis(): Long {
+    return System.currentTimeMillis()
+}
+
+fun getTimeDifference(startTime: Long): String {
+    val totalTime = System.currentTimeMillis() - startTime
+    return "${TimeUnit.MILLISECONDS.toMillis(totalTime)} Millis"
 }
 
 fun getActivityLauncher(caller: ActivityResultCaller): BetterActivityResult<Intent, ActivityResult> {

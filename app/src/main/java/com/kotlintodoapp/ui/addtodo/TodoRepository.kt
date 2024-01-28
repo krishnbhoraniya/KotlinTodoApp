@@ -6,18 +6,22 @@ import com.kotlintodoapp.database.entities.Todo
 class TodoRepository(private val todoDao: TodoDao) {
 
     suspend fun insert(todo: Todo) {
-        todoDao.insert(todo);
+        todoDao.insert(todo)
+    }
+
+    suspend fun insertAll(todoList: List<Todo>) {
+        todoDao.insertAll(todoList)
     }
 
     fun getAllTodos(): List<Todo> {
-        return todoDao.getAllTodos();
+        return todoDao.getAllTodos()
     }
 
     suspend fun update(todo: Todo) {
-        todoDao.update(todo.id, todo.title, todo.note);
+        todoDao.update(todo.id, todo.title, todo.note)
     }
 
     suspend fun delete(todo: Todo) {
-        todoDao.delete(todo);
+        todoDao.delete(todo)
     }
 }

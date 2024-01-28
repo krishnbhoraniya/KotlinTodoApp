@@ -1,16 +1,25 @@
 package com.kotlintodoapp.ui.addtodo
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlintodoapp.database.entities.Todo
 import com.kotlintodoapp.databinding.ItemTodoBinding
 
 class TodoAdapter(private val todoClickListener: TodoClickListener) :
-    RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
+    ListAdapter<Todo, TodoAdapter.ViewHolder>(DiffUtilCallBack()) {
 
-    private val todoArrayList = ArrayList<Todo>()
+    class DiffUtilCallBack : DiffUtil.ItemCallback<Todo>() {
+        override fun areItemsTheSame(oldItem: Todo, newItem: Todo): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Todo, newItem: Todo): Boolean {
+            return oldItem == newItem
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemTodoBinding =
@@ -18,20 +27,9 @@ class TodoAdapter(private val todoClickListener: TodoClickListener) :
         return ViewHolder(itemTodoBinding, todoClickListener)
     }
 
-    override fun getItemCount(): Int {
-        return todoArrayList.size
-    }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val todo = todoArrayList[position]
+        val todo = getItem(position)
         holder.bind(todo)
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun setData(todoList: List<Todo>) {
-        todoArrayList.clear()
-        todoArrayList.addAll(todoList)
-        notifyDataSetChanged()
     }
 
     class ViewHolder(

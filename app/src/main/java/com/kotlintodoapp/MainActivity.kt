@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity(), TodoClickListener {
 
         todoViewModel.allTodo.observe(this) { todoList ->
             todoList?.let {
-                todoAdapter.setData(todoList)
+                todoAdapter.submitList(todoList)
             }
         }
     }

@@ -13,6 +13,9 @@ interface TodoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(todo: Todo)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(todoList: List<Todo>)
+
     @Query("SELECT * from todo_table order by id DESC")
     fun getAllTodos(): List<Todo>
 
