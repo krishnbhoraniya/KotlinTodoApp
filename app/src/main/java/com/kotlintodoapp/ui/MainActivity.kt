@@ -1,4 +1,4 @@
-package com.kotlintodoapp
+package com.kotlintodoapp.ui
 
 import android.app.Activity
 import android.content.Intent
@@ -6,16 +6,18 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import com.kotlintodoapp.R
+import com.kotlintodoapp.adapter.TodoAdapter
 import com.kotlintodoapp.database.entities.Todo
 import com.kotlintodoapp.databinding.ActivityMainBinding
-import com.kotlintodoapp.ui.addtodo.AddTodoActivity
-import com.kotlintodoapp.ui.addtodo.TodoAdapter
-import com.kotlintodoapp.ui.addtodo.TodoClickListener
-import com.kotlintodoapp.ui.addtodo.TodoViewModel
+import com.kotlintodoapp.listener.TodoClickListener
 import com.kotlintodoapp.utilities.IntentKey
 import com.kotlintodoapp.utilities.getActivityLauncher
 import com.kotlintodoapp.utilities.serializable
+import com.kotlintodoapp.viewmodels.TodoViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), TodoClickListener {
 
     private lateinit var binding: ActivityMainBinding

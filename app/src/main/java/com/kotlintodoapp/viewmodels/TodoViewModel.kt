@@ -1,4 +1,4 @@
-package com.kotlintodoapp.ui.addtodo
+package com.kotlintodoapp.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -7,10 +7,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.kotlintodoapp.database.AppDatabase
 import com.kotlintodoapp.database.entities.Todo
+import com.kotlintodoapp.repository.TodoRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+@HiltViewModel
 class TodoViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: TodoRepository
     private val _allTodo: MutableLiveData<List<Todo>> by lazy { MutableLiveData<List<Todo>>() }

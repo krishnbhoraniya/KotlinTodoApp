@@ -1,4 +1,4 @@
-package com.kotlintodoapp.ui.addtodo
+package com.kotlintodoapp.listener
 
 interface AddEditTodoListener {
 

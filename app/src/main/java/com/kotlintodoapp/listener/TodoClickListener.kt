@@ -1,4 +1,4 @@
-package com.kotlintodoapp.ui.addtodo
+package com.kotlintodoapp.listener
 
 import com.kotlintodoapp.database.entities.Todo
 

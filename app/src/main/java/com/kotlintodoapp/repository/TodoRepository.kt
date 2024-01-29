@@ -1,4 +1,4 @@
-package com.kotlintodoapp.ui.addtodo
+package com.kotlintodoapp.repository
 
 import com.kotlintodoapp.database.daos.TodoDao
 import com.kotlintodoapp.database.entities.Todo

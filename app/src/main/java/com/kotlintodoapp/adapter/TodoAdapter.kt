@@ -1,4 +1,4 @@
-package com.kotlintodoapp.ui.addtodo
+package com.kotlintodoapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlintodoapp.database.entities.Todo
 import com.kotlintodoapp.databinding.ItemTodoBinding
+import com.kotlintodoapp.listener.TodoClickListener
 
 class TodoAdapter(private val todoClickListener: TodoClickListener) :
     ListAdapter<Todo, TodoAdapter.ViewHolder>(DiffUtilCallBack()) {
