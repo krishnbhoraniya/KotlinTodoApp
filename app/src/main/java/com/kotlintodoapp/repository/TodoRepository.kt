@@ -2,8 +2,9 @@ package com.kotlintodoapp.repository
 
 import com.kotlintodoapp.database.daos.TodoDao
 import com.kotlintodoapp.database.entities.Todo
+import javax.inject.Inject
 
-class TodoRepository(private val todoDao: TodoDao) {
+class TodoRepository @Inject constructor(private val todoDao: TodoDao) {
 
     suspend fun insert(todo: Todo) {
         todoDao.insert(todo)

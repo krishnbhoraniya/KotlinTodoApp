@@ -44,10 +44,7 @@ class MainActivity : AppCompatActivity(), TodoClickListener {
     }
 
     private fun initData() {
-        todoViewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        )[TodoViewModel::class.java]
+        todoViewModel = ViewModelProvider(this)[TodoViewModel::class.java]
 
         todoViewModel.allTodo.observe(this) { todoList ->
             todoList?.let {

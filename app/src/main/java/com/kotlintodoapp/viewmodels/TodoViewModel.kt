@@ -1,27 +1,24 @@
 package com.kotlintodoapp.viewmodels
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kotlintodoapp.database.AppDatabase
 import com.kotlintodoapp.database.entities.Todo
 import com.kotlintodoapp.repository.TodoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class TodoViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository: TodoRepository
+class TodoViewModel @Inject constructor(private val repository: TodoRepository) : ViewModel() {
+
     private val _allTodo: MutableLiveData<List<Todo>> by lazy { MutableLiveData<List<Todo>>() }
     val allTodo: LiveData<List<Todo>> = _allTodo
 
     init {
-        val todoDao = AppDatabase.getDatabase(application).getTodoDao()
-        repository = TodoRepository(todoDao)
         loadData()
     }
 
