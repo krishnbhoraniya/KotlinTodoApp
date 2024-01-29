@@ -4,10 +4,15 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.kotlin.kapt) apply false
+    alias(libs.plugins.hilt.android.plugin) apply false
 }
 
 buildscript {
+    repositories {
+        mavenCentral()
+    }
     dependencies {
         classpath(libs.kotlin.gradlePlugin)
+        classpath(libs.hilt.android.gradle.plugin)
     }
 }

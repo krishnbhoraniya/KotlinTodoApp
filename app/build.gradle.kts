@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.hilt.android.plugin)
 }
 
 android {
@@ -50,13 +50,21 @@ dependencies {
 
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx) //Kotlin Extensions and Coroutines support for Room
-    ksp(libs.androidx.room.compiler) // To use Kotlin annotation processing tool (kapt)
+    kapt(libs.androidx.room.compiler) // To use Kotlin annotation processing tool (kapt)
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx) // ViewModel
     implementation(libs.androidx.lifecycle.runtime.ktx) // Lifecycles only (without ViewModel or LiveData)
     implementation(libs.kotlinx.coroutines.android)
 
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext)
     androidTestImplementation(libs.androidx.test.espresso.core)
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
