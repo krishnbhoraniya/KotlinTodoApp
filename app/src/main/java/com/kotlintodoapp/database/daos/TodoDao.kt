@@ -17,7 +17,7 @@ interface TodoDao {
     suspend fun insertAll(todoList: List<Todo>)
 
     @Query("SELECT * from todo_table order by id DESC")
-    fun getAllTodos(): List<Todo>
+    suspend fun getAllTodos(): List<Todo>
 
     @Query("UPDATE todo_table set title = :title, note = :note where id = :id")
     suspend fun update(id: Int?, title: String?, note: String?)

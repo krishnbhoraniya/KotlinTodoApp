@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.kotlintodoapp.database.entities.Todo
 import com.kotlintodoapp.repository.TodoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,10 +21,8 @@ class TodoViewModel @Inject constructor(private val repository: TodoRepository) 
         loadData()
     }
 
-    private fun loadData() {
-        CoroutineScope(Dispatchers.IO).launch {
-            _allTodo.postValue(repository.getAllTodos())
-        }
+    private fun loadData() = viewModelScope.launch(Dispatchers.IO) {
+        _allTodo.postValue(repository.getAllTodos())
     }
 
     fun insert(todo: Todo) = viewModelScope.launch(Dispatchers.IO) {

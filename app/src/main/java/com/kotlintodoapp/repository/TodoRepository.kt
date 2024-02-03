@@ -14,7 +14,7 @@ class TodoRepository @Inject constructor(private val todoDao: TodoDao) {
         todoDao.insertAll(todoList)
     }
 
-    fun getAllTodos(): List<Todo> {
+    suspend fun getAllTodos(): List<Todo> {
         return todoDao.getAllTodos()
     }
 
